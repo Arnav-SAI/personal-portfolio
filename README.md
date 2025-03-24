@@ -1,2 +1,2 @@
 # personal-portfolio
-arnavsaini.netlify.app
+arnavsaini.vercel.app
