@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnav Saini - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #151515;
+            --text-primary: #e5e5e5;
+            --text-secondary: #a3a3a3;
+            --text-muted: #666666;
+            --accent: #3b82f6;
+            --border: #222222;
+            --hover-bg: #1a1a1a;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 180px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 2rem 0;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-name {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .nav-icon {
+            font-size: 1rem;
+        }
+
+        .sidebar-section {
+            margin-top: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .sidebar-section-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 180px;
+            padding: 2rem;
+        }
+
+        /* Hero Section - Quirky */
+        .hero {
+            padding: 6rem 0 4rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-quirky {
+            margin-bottom: 4rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .hero-link:hover {
+            color: var(--text-primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--hover-bg);
+            border-color: var(--text-muted);
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--text-secondary);
+            border-color: var(--text-secondary);
+        }
+
+        /* About Section */
+        section {
+            padding: 4rem 0;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .about-content {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-4px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .project-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Blog Section */
+        .blog-posts {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .blog-post {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-post:hover {
+            opacity: 0.7;
+        }
+
+        .blog-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                min-width: 100%;
+            }
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu-links li {
+            margin: 0;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-links a:hover,
+        .mobile-menu-links a.active {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 968px) {
+            .mobile-nav {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 2rem;
+                z-index: 1001;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .main-content {
+                padding-top: 5rem;
+            }
+        }
+
+        .mobile-nav-brand {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-avatar"></div>
+            <div class="sidebar-name">Arnav Saini</div>
+            <div class="sidebar-role">SElf proclaimed Jack of all trades</div>
+        </div>
+
+        <nav>
+            <ul class="sidebar-nav">
+                <li><a href="#home" class="active"><span class="nav-icon">🏠</span> Home</a></li>
+                <li><a href="#about"><span class="nav-icon">📖</span> About</a></li>
+                <li><a href="#projects"><span class="nav-icon">📁</span> Projects</a></li>
+                <li><a href="#blog"><span class="nav-icon">📝</span> Articles</a></li>
+                <li><a href="#contact"><span class="nav-icon">✉️</span> Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Socials</div>
+            <a href="https://twitter.com" class="social-link" target="_blank"><span class="nav-icon">𝕏</span> Twitter</a>
+            <a href="https://www.linkedin.com/in/arnav-sainii" class="social-link" target="_blank"><span class="nav-icon">in</span> LinkedIn</a>
+            <a href="https://github.com/Arnav-SAI" class="social-link" target="_blank"><span class="nav-icon">⌘</span> GitHub</a>
+            <a href="https://medium.com/@arnav" class="social-link" target="_blank"><span class="nav-icon">M</span> Medium</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <span class="mobile-nav-brand">Arnav Saini</span>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">Menu</button>
+    </nav>
+
+    <!-- Mobile Menu Dropdown -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#home" onclick="closeMobileMenu()">🏠 Home</a></li>
+            <li><a href="#about" onclick="closeMobileMenu()">📖 About</a></li>
+            <li><a href="#projects" onclick="closeMobileMenu()">📁 Projects</a></li>
+            <li><a href="#blog" onclick="closeMobileMenu()">📝 Articles</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">✉️ Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-quirky">
+                    <div class="hero-text">
+                        <h1>Arnav Saini</h1>
+                        <p class="hero-subtitle">High school student with an entrepreneurial bent of mind. I experiment with different ideas and projects, exploring everything at a niche level.</p>
+                        <div class="hero-links">
+                            <a href="https://twitter.com" class="hero-link" target="_blank">𝕏</a>
+                            <a href="https://linkedin.com/in/arnavsaini114" class="hero-link" target="_blank">LinkedIn</a>
+                            <a href="https://github.com/Arnav-SAI" class="hero-link" target="_blank">GitHub</a>
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="hero-link" target="_blank">📄 CV</a>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">💭</div>
+                    <h2>About</h2>
+                </div>
+                <div class="about-content">
+                    <p>I’m an early-stage founder and builder exploring the intersection of technology, finance, and scalable systems. I spend my time designing products, experimenting with AI, and turning abstract ideas into working prototypes.</p>
+                    <p>I built Next Bench, a student first platform that combines AI driven insights with real human mentorship to help students navigate their academic and career paths with clarity. My focus isn’t just on shipping features — it’s on designing systems that actually create leverage. If it anything sound over enginnered I’m probabally interested.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">⚡</div>
+                    <h2>What I've been working on</h2>
+                </div>
+                <div class="projects-grid">
+                    <!-- No Surprises -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/mira', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Mira</h3>
+                                <a href="https://github.com/Arnav-SAI/mira" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">open source alternative for claude code , codex etc.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">shell</span>
+                            <span class="tech-tag">api</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+                <div class="projects-grid">
+                    <!-- No Surprises -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/no-surprises', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">No Surprises</h3>
+                                <a href="https://github.com/Arnav-SAI/no-surprises" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">A Neo-Brutalist web tool that turns your social habits into a spec sheet. Define your current era, set reply expectations, and generate instant shareable cards.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+
+                    <!-- ATS Resume -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/ats-resume', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">ATS Resume Analyzer</h3>
+                                <a href="https://github.com/Arnav-SAI/ats-resume" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">A production-grade web platform that analyzes resumes against job descriptions using ATS-style parsing + human-readable insights.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+
+                    <!-- NeoVox -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/neovox', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">NeoVox</h3>
+                                <a href="https://github.com/Arnav-SAI/neovox" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">Next-generation voice interface platform with real-time audio processing and natural language understanding.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Web Audio API</span>
+                            <span class="tech-tag">AI</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+
+                    <!-- Learning Tool -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/Learning-tool', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">AI Learning Tool</h3>
+                                <a href="https://github.com/Arnav-SAI/Learning-tool" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">Intelligent learning platform leveraging machine learning to create personalized study paths and track progress.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+
+                    <!-- Hand Gesture Controller -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/Hand-Gesture-Controller', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Hand Gesture Controller</h3>
+                                <a href="https://github.com/Arnav-SAI/Hand-Gesture-Controller" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">Computer vision interface that transforms your hand into a virtual mouse using MediaPipe and OpenCV.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">MediaPipe</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+
+                    <!-- BioMorph -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/bio-morph', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">BioMorph</h3>
+                                <a href="https://github.com/Arnav-SAI/bio-morph" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">Interactive browser-based digital art experiment that fuses computer vision with 3D generative particles. A living particle system that reacts to your hand gestures in real-time.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">WebGL</span>
+                        </div>
+                        <p class="project-meta">Updated Jan 2026</p>
+                    </div>
+
+                    <!-- First PR Bot -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/first-pr-bot', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">First PR Bot</h3>
+                                <a href="https://github.com/Arnav-SAI/first-pr-bot" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">GitHub bot that automatically greets new contributors and helps onboard them to open source projects.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">GitHub API</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <p class="project-meta">Updated Feb 2026</p>
+                    </div>
+
+                    <!-- Web Scraper -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/WebScraper', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Web Scraper</h3>
+                                <a href="https://github.com/Arnav-SAI/WebScraper" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">Powerful web scraping tool for extracting data from websites with customizable selectors and export options.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">Puppeteer</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <p class="project-meta">⭐ 1 star • Updated Apr 2025</p>
+                    </div>
+
+                    <!-- Password Manager -->
+                    <div class="project-card" onclick="window.open('https://github.com/Arnav-SAI/password-manager', '_blank')">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Password Manager</h3>
+                                <a href="https://github.com/Arnav-SAI/password-manager" class="project-link" target="_blank">View on GitHub →</a>
+                            </div>
+                        </div>
+                        <p class="project-description">Secure password management application with encryption and local storage capabilities.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Encryption</span>
+                            <span class="tech-tag">LocalStorage</span>
+                        </div>
+                        <p class="project-meta">Updated Mar 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">📝</div>
+                    <h2>I write about technology</h2>
+                    <p class="section-subtitle">Ever since I was a kid, I've been fascinated by tech.</p>
+                </div>
+                <div class="blog-posts" id="blogPosts">
+                    <article class="blog-post">
+                        <p class="blog-meta">DECEMBER 2024</p>
+                        <h3 class="blog-title">Building Scalable React Applications</h3>
+                        <p class="blog-excerpt">Exploring best practices for architecting large-scale React applications with proper state management and component structure...</p>
+                    </article>
+                    <article class="blog-post">
+                        <p class="blog-meta">NOVEMBER 2024</p>
+                        <h3 class="blog-title">Machine Learning for Web Developers</h3>
+                        <p class="blog-excerpt">A practical guide to integrating machine learning models into your web applications using TensorFlow.js...</p>
+                    </article>
+                    <article class="blog-post">
+                        <p class="blog-meta">OCTOBER 2024</p>
+                        <h3 class="blog-title">Performance Optimization in Next.js</h3>
+                        <p class="blog-excerpt">Deep dive into optimizing Next.js applications for better performance and user experience...</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">✉️</div>
+                    <h2>Contact Me</h2>
+                    <p class="section-subtitle">Reach out to me over email or connect through social media.</p>
+                </div>
+                <div class="about-content">
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out through any of the channels below.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="mailto:sainiarnav114@gmail.com" class="btn btn-primary">📧 Send me an email</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>2026 — Arnav Saini</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active nav link
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Newsletter subscription
+        document.getElementById('subscribeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const message = document.getElementById('subscribeMessage');
+            
+            // Simulate API call
+            try {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                message.textContent = 'Thanks for subscribing! Check your email for confirmation.';
+                message.style.color = 'var(--text-primary)';
+                message.style.display = 'block';
+                
+                document.getElementById('emailInput').value = '';
+            } catch (error) {
+                message.textContent = 'Something went wrong. Please try again.';
+                message.style.color = '#ef4444';
+                message.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
